@@ -12,7 +12,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: 'https://cl-frontend-dd2e0ueg6-aarush1137s-projects.vercel.app/', // Replace with your frontend URL
+    origin: 'https://cl-frontend-rosy.vercel.app/', // Replace with your frontend URL
     credentials: true,
   })
 );
