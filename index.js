@@ -29,16 +29,8 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.json());
 
-// Connect to MongoDB
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((error) => console.error('MongoDB connection error:', error));
+app.use(express.json());
 
 // Routes
 app.use('/api/files', fileRoutes);
@@ -48,6 +40,15 @@ app.use((err, req, res, next) => {
   console.error('Global error handler:', err);
   res.status(500).send('Internal Server Error');
 });
+
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((error) => console.error('MongoDB connection error:', error));
 
 // Start the server
 const PORT = process.env.PORT || 5000;
